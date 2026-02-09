@@ -141,12 +141,13 @@ wide_distractors <- all_distraktoren %>%
     across(matches("^(abs|rel|trenn)_"), ~ round(as.numeric(.x), 3))
   )
 
-# Step 2: Join wide distractors to all_data
+# Join wide distractors to all_data
 all_data_with_distractors <- all_data %>%
   mutate(item.id = as.integer(item.id)) %>%
   left_join(
     wide_distractors,
     by = c("item.id" = "FragenID", "source_file" = "source_file")
   )
+
 
 
