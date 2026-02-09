@@ -36,7 +36,7 @@ read_item_analyse <- function(file_path) {
       trenns = 6,
       cronbach.auswirk = 7
     ) %>%
-    filter(autor == "....") %>% #filter to your exam questions
+    filter(str_detect(autor, "...")) %>% #filter to your exam questions by using your name
     mutate(
       source_file = basename(file_path),
       n = n_students  # add number of students as a column
@@ -148,6 +148,7 @@ all_data_with_distractors <- all_data %>%
     wide_distractors,
     by = c("item.id" = "FragenID", "source_file" = "source_file")
   )
+
 
 
 
